@@ -8,27 +8,24 @@ public class Chicken : MonoBehaviour
     [SerializeField] private LayerMask _groundLayer;
     [SerializeField] private Animator _animator;
 
-    private int _idRun;
-    private int _idFlight;
     private Vector3 _startPosition;
     private SnakeChicken _snakeChicken;
 
     public SnakeChicken SnakeChickenParent => _snakeChicken;
+
     public event UnityAction<Vector3> Stopped;
     public event UnityAction<Chicken> Catched;
 
     private void Start()
     {
         _snakeChicken = GetComponentInParent<SnakeChicken>();
-        _idRun = Animator.StringToHash("IsRun");
-        _idFlight = Animator.StringToHash("IsFlight");
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Egg>(out Egg egg))
+        if (other.TryGetComponent<ChickenEgg>(out ChickenEgg egg))
         {
-            Catched?.Invoke(egg.CreateChicken(transform));
+            Catched?.Invoke(egg.Hatch(transform));
             Destroy(egg.gameObject);
         }
     }
@@ -43,18 +40,18 @@ public class Chicken : MonoBehaviour
             SwapDirection();
         }
 
-        PlayAnimation(_idRun);
+        PlayAnimation(ChickenStates.Run);
         transform.DOMove(toPosition, speedMove).OnComplete(() => StoppedMove());
     }
     
     public void Fly()
     {
-        PlayAnimation(_idFlight);
+        PlayAnimation(ChickenStates.Flight);
     }
 
     public void Stay()
     {
-        StopAnimation(_idFlight);
+        StopAnimation(ChickenStates.Flight);
     }
 
     public bool CheckCollisionWithGround(Vector3 direction, float lengthToGround)
@@ -64,7 +61,7 @@ public class Chicken : MonoBehaviour
 
     public bool CheckCollisionWithChicken(Vector3 direction, float lengthToGround)
     {
-        if (Physics.Raycast(_ceneter.position, direction, out RaycastHit hit))
+        if (Physics.Raycast(_ceneter.position, direction, out RaycastHit hit, lengthToGround))
         {
             return hit.transform.TryGetComponent<Chicken>(out Chicken chicken);
         }
@@ -76,11 +73,11 @@ public class Chicken : MonoBehaviour
 
     private void StoppedMove()
     {
-        StopAnimation(_idRun);
+        StopAnimation(ChickenStates.Run);
         Stopped?.Invoke(_startPosition);
     }
 
-    private void PlayAnimation(int idAnimation) => _animator.SetBool(idAnimation, true);
+    private void PlayAnimation(string animation) => _animator.SetBool(animation, true);
 
-    private void StopAnimation(int idAnimation) => _animator.SetBool(idAnimation, false);
+    private void StopAnimation(string animation) => _animator.SetBool(animation, false);
 }

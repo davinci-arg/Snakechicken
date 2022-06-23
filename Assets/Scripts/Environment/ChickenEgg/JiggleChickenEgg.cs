@@ -1,11 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Collider), typeof(Rigidbody))]
-public class Egg : MonoBehaviour
+public class JiggleChickenEgg : MonoBehaviour
 {
-    [SerializeField] private Chicken _template;
     [SerializeField] private Animator _animator;
     [SerializeField] private float _maxWaitTime = 6f;
 
@@ -13,19 +12,15 @@ public class Egg : MonoBehaviour
 
     public event UnityAction Jiggled;
 
-    private void Start()
+    private void Awake()
     {
         _jiggleID = Animator.StringToHash("Jiggle");
-        Jiggled += StartJiggle;
-        StartJiggle();
     }
 
-    public Chicken CreateChicken(Transform bornPlace) => Instantiate(_template, bornPlace.position, bornPlace.rotation);
+    public void StartJiggling() => StartCoroutine(Jiggling());
 
-    private void StartJiggle() => StartCoroutine(Jiggling());
-    
     private IEnumerator Jiggling()
-    {        
+    {
         WaitForSeconds waitForJiggle = new WaitForSeconds(Random.Range(0, _maxWaitTime));
         yield return waitForJiggle;
         _animator.SetTrigger(_jiggleID);

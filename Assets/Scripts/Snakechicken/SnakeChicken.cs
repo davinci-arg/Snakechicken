@@ -132,8 +132,9 @@ public class SnakeChicken : MonoBehaviour
     private IEnumerator Falling()
     {
         Vector3 toPosition = transform.position + Vector3.down * _skill.MoveDistance;
+        float minFloatNumber = .00001f;
 
-        while (Vector3.Distance(transform.position, toPosition) > 0.001f)
+        while (Vector3.Distance(transform.position, toPosition) > minFloatNumber)
         {
             transform.position = Vector3.MoveTowards(transform.position, toPosition, _skill.SpeedFalling * Time.deltaTime);
             yield return null;

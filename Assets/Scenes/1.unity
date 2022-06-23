@@ -14907,7 +14907,7 @@ Transform:
   - {fileID: 268303338}
   - {fileID: 268303340}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &268303343
 MonoBehaviour:
@@ -15813,37 +15813,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4303714670992534595, guid: 4918b1de6b9bd51489a9dfa4cae204e9, type: 3}
   m_PrefabInstance: {fileID: 1157607134}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1193643737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1193643738}
-  m_Layer: 0
-  m_Name: -------------------
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1193643738
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193643737}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1220562184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16815,7 +16784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574997034}
   m_Layer: 0
-  m_Name: Eggs
+  m_Name: ChickenEggs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16828,14 +16797,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574997033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 183898148}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1978553855}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722748590
 GameObject:
@@ -17280,7 +17249,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1978553855}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1950624355
 BoxCollider:
@@ -17484,6 +17453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1574997034}
   - {fileID: 2112399896}
   - {fileID: 1950624354}
   m_Father: {fileID: 0}
@@ -17532,7 +17502,7 @@ Transform:
   m_Children:
   - {fileID: 1972551848}
   m_Father: {fileID: 1978553855}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127979993
 GameObject:
@@ -17678,7 +17648,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 887725091850055865, guid: 0a7d37534e3647f4abd5c977ff4ffbc1, type: 3}
       propertyPath: m_Name
-      value: Egg
+      value: ChickenEgg
       objectReference: {fileID: 0}
     - target: {fileID: 887725091850055871, guid: 0a7d37534e3647f4abd5c977ff4ffbc1, type: 3}
       propertyPath: m_RootOrder
